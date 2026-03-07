@@ -1,0 +1,58 @@
+<html>
+<header>
+	<style> 
+       body { 
+            font-family: Arial, sans-serif; 
+            background-color: #f2f5f9; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+        } 
+        h1 { 
+            color: #2c3e50; 
+            text-align: center; 
+            padding: 20px; 
+            margin: 0;
+        } 
+        label { 
+            display: block; 
+            text-align: left; 
+            margin-top: 10px; 
+            font-weight: bold; 
+        } 
+        input[type="text"], input[type="password"] { 
+            width: 100%; 
+            padding: 8px; 
+            margin-top: 5px; 
+            border-radius: 5px; 
+            border: 1px solid #ccc; 
+        } 
+        input[type="submit"] { 
+            width: 100%; 
+            margin-top: 20px; 
+            padding: 10px; 
+            background-color: #3498db; 
+            color: white; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 16px; 
+            cursor: pointer; 
+        } 
+        input[type="submit"]:hover { 
+            background-color: #2980b9; 
+        } 
+    </style>
+</header>
+<body>
+    <h1>Student Management System</h1>
+	<form action="/login/">
+		<label>User Name</label> 
+        <input type="text" name="name" placeholder="Enter username"> 
+        
+        <label>Password</label> 
+        <input type="password" name="password" placeholder="Enter password"> 
+        <input type="submit" value="Login">
+	</form>
+</body>
+</html>

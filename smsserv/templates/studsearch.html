@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Search Student</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f5f9;
+        margin: 0;
+      }
+
+      /* Header */
+      .header {
+        background: #d9dee3;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .header h1 {
+        margin: 0;
+        color: #2c3e50;
+      }
+
+      /* Search box */
+      .search-container {
+        width: 400px;
+        margin: 80px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      /* Labels */
+      label {
+        font-weight: bold;
+      }
+
+      /* Input field */
+      input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+
+      /* Buttons */
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #3b8ec2;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #2f79a6;
+      }
+
+      /* Link button */
+      .link-btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 8px 15px;
+        background: #6c757d;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+      }
+
+      .link-btn:hover {
+        background: #5a6268;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Student Management System</h1>
+    </div>
+
+    <div class="search-container">
+      <h2>Search Student</h2>
+      <form action="/studentinfo/search/">
+        <label>Student ID</label>
+        <input type="text" name="id" placeholder="Enter student ID" />
+        <button type="submit">Search</button>
+      </form>
+      <a class="link-btn" href="/studentinfo/displaycreate/">Create Student Record</a>
+    </div>
+  </body>
+</html>
