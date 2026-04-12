@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Protected Page</title>
+
+  <script>
+    async function loadProtectedData(){
+      let token = localStorage.getItem("token");
+
+      if(!token){
+        alert("Please login first");
+        window.location.href = "/";
+        return;
+      }
+
+      let response = await fetch("/api/protected/", {
+        method: "GET",
+        headers: {
+          "Authorization": "Bearer " + token
+        }
+      });
+
+      let data = await response.json();
+
+      if(response.status === 401){
+        alert("Session expired. Please login again.");
+        localStorage.removeItem("token");
+        window.location.href = "/";
+        return;
+      }
+
+      document.getElementById("msg").innerText = data.message;
+    }
+
+    function logout(){
+      localStorage.removeItem("token");
+      window.location.href = "/";
+    }
+
+    window.onload = loadProtectedData;
+  </script>
+</head>
+
+<body>
+
+<h1>Protected Page (JWT)</h1>
+
+<p id="msg"></p>
+
+<br>
+<button onclick="logout()">Logout</button>
+
+</body>
+</html>

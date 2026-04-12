@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JWT Login</title>
+
+  <script>
+    async function loginUser(event){
+      event.preventDefault();
+
+      let username = document.getElementsByName("name")[0].value;
+      let password = document.getElementsByName("password")[0].value;
+
+      let response = await fetch("/login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: username,
+          password: password
+        })
+      });
+
+      let data = await response.json();
+
+      if(response.ok){
+        localStorage.setItem("token", data.token);
+        window.location.href = "/protected/";
+      } else {
+        alert(data.message);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h2>JWT Login</h2>
+
+  <form onsubmit="loginUser(event)">
+    <input type="text" name="name" placeholder="Username"><br><br>
+    <input type="password" name="password" placeholder="Password"><br><br>
+    <button type="submit">Login</button>
+  </form>
+</body>
+</html>
