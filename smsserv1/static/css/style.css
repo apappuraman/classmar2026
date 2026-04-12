@@ -1,0 +1,195 @@
+/* Common styles */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f5f9;
+    margin: 0;
+  }
+  
+  /* Header */
+  .header {
+    background: #d9dee3;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .header h1 {
+    margin: 0;
+    color: #2c3e50;
+  }
+  
+  /* Containers */
+  .form-container,
+  .search-container,
+  .success-container,
+  .result-container {
+    background: white;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Sizes */
+  .search-container {
+    width: 400px;
+  }
+  
+  .success-container {
+    width: 500px;
+    text-align: center;
+  }
+  
+  .result-container {
+    width: 600px;
+  }
+  
+  /* Inputs */
+  input[type="text"],
+  input[type="password"],
+  input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  /* Buttons */
+  button,
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background: #3b8ec2;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover,
+  input[type="submit"]:hover {
+    background: #2f79a6;
+  }
+  
+  /* Links */
+  a {
+    text-decoration: none;
+    color: #3b8ec2;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th {
+    background: #3b8ec2;
+    color: white;
+    padding: 10px;
+  }
+  
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  tr:hover {
+    background: #f2f2f2;
+  }
+
+  /* Top right navigation */
+  .top-nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .top-nav a,
+  .top-nav button {
+    margin-left: 10px;
+    padding: 8px 12px;
+    background: #3b8ec2;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .top-nav a:hover,
+  .top-nav button:hover {
+    background: #2f79a6;
+  }
+
+  .success-container {
+    width: 500px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .success-message {
+    color: green;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .student-id {
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .links {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #3b8ec2;
+    font-weight: bold;
+  }
+  
+  .links a:hover {
+    text-decoration: underline;
+  }
+
+  .form-container {
+    width: 400px;
+    margin: auto;
+  }
+
+  /* Center whole page */
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  /* Optional: spacing */
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 100px); /* subtract header height */
+  }

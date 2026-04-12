@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Search Result</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Student Search Result</h1>
+    </div>
+
+    <div class="result-container">
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>Pin</th>
+        </tr>
+
+        {% for row in rows %}
+        <tr>
+          <td>{{row[1]}}</td>
+          <td>{{row[2]}}</td>
+          <td>{{row[3]}}</td>
+          <td>{{row[4]}}</td>
+          <td>{{row[5]}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      <div class="links">
+        <a href="/studentinfo/displaycreate/">Create Student Record</a> | 
+        <a href="/studentinfo/displaysearch/">Search Student Record</a>
+      </div>
+    </div>
+  </body>
+</html>

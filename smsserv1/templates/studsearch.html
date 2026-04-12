@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script>
+      function checkLogin() {
+        let token = localStorage.getItem("token");
+        if (!token) {
+          alert("Please login first");
+          window.location.href = "/";
+          return false;
+        }
+        return true;
+      }
+
+      async function searchStudent(event) {
+        event.preventDefault();
+
+        if (!checkLogin()) {
+          return;
+        }
+
+        let sid = document.getElementsByName("id")[0].value.trim();
+
+        if (sid.length === 0) {
+          alert("Student ID cannot be empty");
+          return;
+        }
+
+        let token = localStorage.getItem("token");
+
+        try {
+          let response = await fetch("/studentinfo/search/?id=" + encodeURIComponent(sid), {
+            method: "GET",
+            headers: {
+              "Authorization": "Bearer " + token
+            }
+          });
+
+          let data = await response.json();
+          let resultDiv = document.getElementById("result");
+
+          if (response.status === 401) {
+            alert(data.message || "Session expired. Please login again.");
+            localStorage.removeItem("token");
+            window.location.href = "/";
+            return;
+          }
+
+          if (!response.ok) {
+            resultDiv.innerHTML = "<p>Unable to fetch student details.</p>";
+            return;
+          }
+
+          if (!data || data.length === 0) {
+            resultDiv.innerHTML = "<p>No student found for the given ID.</p>";
+            return;
+          }
+
+          let html = `
+            <table>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Pin</th>
+              </tr>
+          `;
+
+          for (let row of data) {
+            html += `
+              <tr>
+                <td>${row[0]}</td>
+                <td>${row[1]}</td>
+                <td>${row[2]}</td>
+                <td>${row[3]}</td>
+                <td>${row[4]}</td>
+                <td>${row[5]}</td>
+              </tr>
+            `;
+          }
+
+          html += `</table>`;
+          resultDiv.innerHTML = html;
+
+        } catch (error) {
+          console.log(error);
+          document.getElementById("result").innerHTML =
+            "<p>Something went wrong while searching.</p>";
+        }
+      }
+
+      function logout() {
+        localStorage.removeItem("token");
+        window.location.href = "/";
+      }
+
+      window.onload = checkLogin;
+    </script>
+  </head>
+
+  <body>
+    <!-- Top Right Navigation -->
+    <div class="top-nav">
+      <a href="/studentinfo/displaycreate/">Create Student</a>
+      <button onclick="logout()">Logout</button>
+    </div>
+    
+    <div class="header">
+      <h1>Student Management System</h1>
+    </div>
+    
+    <div class="search-container">
+      <h2>Search Student</h2>
+    
+      <form onsubmit="searchStudent(event)">
+        <label>Student ID</label>
+        <input type="text" name="id" placeholder="Enter student ID" />
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    
+    <!-- Result Section -->
+    <div class="result-container" id="result"></div>
+  </body>
+</html>

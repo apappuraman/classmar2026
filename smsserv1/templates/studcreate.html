@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script>
+      function checkLogin() {
+        let token = localStorage.getItem("token");
+        if (!token) {
+          alert("Please login first");
+          window.location.href = "/";
+          return false;
+        }
+        return true;
+      }
+
+      async function createStudent(event) {
+        event.preventDefault();
+
+        if (!checkLogin()) {
+          return;
+        }
+
+        let token = localStorage.getItem("token");
+
+        let data = {
+          name: document.getElementsByName("name")[0].value.trim(),
+          age: document.getElementsByName("age")[0].value.trim(),
+          address: document.getElementsByName("address")[0].value.trim(),
+          city: document.getElementsByName("city")[0].value.trim(),
+          pin: document.getElementsByName("pin")[0].value.trim()
+        };
+
+        if (
+          data.name.length === 0 ||
+          data.age.length === 0 ||
+          data.address.length === 0 ||
+          data.city.length === 0 ||
+          data.pin.length === 0
+        ) {
+          alert("All fields are required");
+          return;
+        }
+
+        try {
+          let response = await fetch("/studentinfo/create/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": "Bearer " + token
+            },
+            body: JSON.stringify(data)
+          });
+
+          let result = await response.json();
+
+          if (response.status === 401) {
+            alert(result.message || "Session expired. Please login again.");
+            localStorage.removeItem("token");
+            window.location.href = "/";
+            return;
+          }
+
+          if (response.ok) {
+            document.getElementById("content").innerHTML = `
+              <div class="success-container">
+                <div class="success-message">
+                  Student created successfully. ID: <span class="student-id">${result.sid}</span>
+                </div>
+
+                <div class="links">
+                  <a href="/studentinfo/displaycreate/">Create Student</a>
+                  <!--<a href="/studentinfo/displaysearch/">Search Student</a>
+                  <a href="#" onclick="logout(); return false;">Logout</a> -->
+                </div>
+              </div>
+            `;
+          } else {
+            alert(result.message || "Error creating student");
+          }
+        } catch (error) {
+          console.log(error);
+          alert("Something went wrong while creating student");
+        }
+      }
+
+      function logout() {
+        localStorage.removeItem("token");
+        window.location.href = "/";
+      }
+
+      window.onload = function () {
+        checkLogin();
+      };
+    </script>
+  </head>
+
+  <body>
+    <div class="top-nav">
+      <a href="/studentinfo/displaysearch/">Search Student</a>
+      <button type="button" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="header">
+      <h1>Student Management System</h1>
+    </div>
+    
+    <div id="content">
+      <div class="form-container">
+        <form onsubmit="createStudent(event)">
+          <label>Name</label>
+          <input type="text" name="name" />
+
+          <label>Age</label>
+          <input type="number" name="age" />
+
+          <label>Address</label>
+          <input type="text" name="address" />
+
+          <label>City</label>
+          <input type="text" name="city" />
+
+          <label>Pin</label>
+          <input type="number" name="pin" />
+
+          <input type="submit" value="Create Student">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

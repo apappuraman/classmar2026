@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Student Created</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+
+  <body>
+    <div class="header">
+      <h1>Student Management System</h1>
+    </div>
+
+    <div class="success-container">
+      <div class="success-message">Student record created successfully!</div>
+      <p>Student ID is: <span class="student-id">{{sid}}</span></p>
+      <a class="button" href="/studentinfo/displaycreate/">Create Student Record</a>
+      <a class="button" href="/studentinfo/displaysearch/">Search Student Record</a>
+    </div>
+  </body>
+</html>

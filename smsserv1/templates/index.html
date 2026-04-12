@@ -1,0 +1,80 @@
+<html>
+<header>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        function validateForm(){
+            let username = document.getElementsByName("name")[0].value;
+            let password = document.getElementsByName("password")[0].value;
+        
+            if(username.length === 0){
+                alert("Username cannot be empty");
+                return false;
+            }
+        
+            if(password.length === 0){
+                alert("Password cannot be empty");
+                return false;
+            }
+        
+            return true;
+        }
+        
+        async function loginUser(event){
+            event.preventDefault(); // ❗ stop normal form submit
+        
+            if(!validateForm()){
+                return;
+            }
+        
+            let username = document.getElementsByName("name")[0].value;
+            let password = document.getElementsByName("password")[0].value;
+        
+            let response = await fetch("/login/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: username,
+                    password: password
+                })
+            });
+        
+            let data = await response.json();
+        
+            if(response.status === 200){
+                // ✅ Save token
+                localStorage.setItem("token", data.token);
+        
+                // ✅ Redirect to create page
+                window.location.href = "/studentinfo/displaycreate/"; 
+            } else {
+                alert(data.message);
+            }
+        }
+        </script>
+</header>
+<body>
+
+    <div class="header">
+      <h1>Student Management System</h1>
+    </div>
+  
+    <div class="main-content">
+        <div class="form-container">
+          <form onsubmit="loginUser(event)">
+            
+            <label>User Name</label>
+            <input type="text" name="name" placeholder="Enter username">
+    
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Enter password">
+    
+            <input type="submit" value="Login">
+    
+          </form>
+        </div>
+      </div>
+  
+  </body>
+</html>
