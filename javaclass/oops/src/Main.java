@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -42,8 +44,25 @@ public class Main {
         BaseCalculatorA b1 = new BaseCalculatorA();
         System.out.println("result="+b1.add("5", "3"));
          */
+        /*
         BaseCalculatorA b1 = new StringCalculator2A();
         System.out.println("result="+b1.add("5", "3"));
 
+         */
+
+        //static method
+        /*
+        MyClass m = new MyClass();
+        m.test1();
+        m.test2();
+
+        new MyClass();
+        new MyClass();
+        new MyClass();
+        new MyClass();
+        m.test2();
+         */
+    //calling static method without obejct creation
+        MyClass.test2();
     }
 }
