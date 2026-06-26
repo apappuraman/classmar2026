@@ -121,5 +121,126 @@ public class Main {
         Integer t10= st.peek();
         System.out.println(t10);
         System.out.println("Stack length after one peek " + st.size());
+
+        //Set
+        Set<Integer> set1 = new HashSet<>();
+        set1.add(7);
+        set1.add(5);
+        set1.add(7);
+        set1.add(8);
+
+        System.out.println("set length is: " + set1.size());
+        for (Integer x:set1) {
+            System.out.println(x);
+        }
+
+        Set<Integer> set2 = new HashSet<>();
+        set2.add(7);
+        set2.add(9);
+        set2.add(6);
+
+        System.out.println("set length is: " + set2.size());
+        for (Integer x:set2) {
+            System.out.println(x);
+        }
+
+        //A union B
+        set1.addAll(set2);
+        System.out.println("A union B: " + set1.size());
+        for (Integer x:set1) {
+            System.out.println(x);
+        }
+
+        //reset set1
+        set1.clear();
+        set1.add(5);
+        set1.add(7);
+        set1.add(8);
+
+        //A intersection B
+        set1.retainAll(set2);
+        System.out.println("A intersection B: " + set1.size());
+        for (Integer x:set1) {
+            System.out.println(x);
+        }
+
+        //reset set1
+        set1.clear();
+        set1.add(5);
+        set1.add(7);
+        set1.add(8);
+
+        //A - B
+        set1.removeAll(set2);
+        System.out.println("A - B: " + set1.size());
+        for (Integer x:set1) {
+            System.out.println(x);
+        }
+
+        Set<Integer> set3 = new TreeSet<>();
+        set3.add(7);
+        set3.add(9);
+        set3.add(6);
+        System.out.println("Tree Set: " + set3.size());
+        for (Integer x:set3) {
+            System.out.println(x);
+        }
+
+        Set<Integer> set4 = new LinkedHashSet<>();
+        set4.add(7);
+        set4.add(9);
+        set4.add(6);
+        System.out.println("Linked Hash Set: " + set4.size());
+        for (Integer x:set4) {
+            System.out.println(x);
+        }
+
+        //Map (key value pair)
+        //  - HashMap
+        //  - TreeMap
+        //  - LinkedHashMap
+        System.out.println("Map");
+        Map<String, Student> map = new HashMap<>();
+        map.put("appu", new Student(11));
+        map.put("ragavan", new Student(22));
+
+        System.out.println("Map length is: "+ map.size());
+        Student temp = map.get("appu");
+        System.out.println("appu obejct is " + temp.val);
+
+        System.out.println("Key set: " + Arrays.toString(map.keySet().toArray()));
+        for (String x:map.keySet()) {
+            System.out.println("key="+x+" value="+ map.get(x).val);
+        }
+
+        //delete
+        map.remove("appu");
+        System.out.println("After removing appu");
+        for (String x:map.keySet()) {
+            System.out.println("key="+x+" value="+ map.get(x).val);
+        }
+
+        Queue<Student1> q3 = new PriorityQueue<Student1>();
+        q3.add(new Student1(7));
+        q3.add(new Student1(9));
+        q3.add(new Student1(5));
+
+        System.out.println("Priority Queue");
+        for(Student1 x: q3){
+            System.out.println(x.val);
+        }
+
+        Student1 st1 = new Student1(4);
+        Student1 st2 = new Student1(5);
+
+        if(st1.compareTo(st2)==0){
+            System.out.println("Equal..");
+        }
+        else if (st1.compareTo(st2)<0){
+            System.out.println("st1 is smaller..");
+        }
+        else {
+            System.out.println("st2 is smaller..");
+        }
     }
 }
