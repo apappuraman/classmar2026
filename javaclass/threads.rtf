@@ -1,0 +1,644 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Bold;\f1\fmodern\fcharset0 Courier-Bold;\f2\froman\fcharset0 Times-Roman;
+\f3\fmodern\fcharset0 Courier;\f4\fnil\fcharset0 AppleColorEmoji;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red109\green109\blue109;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c50196\c50196\c50196;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}
+{\list\listtemplateid3\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid201\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid3}
+{\list\listtemplateid4\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid301\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid4}
+{\list\listtemplateid5\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat0\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid401\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid5}
+{\list\listtemplateid6\listhybrid{\listlevel\levelnfc0\levelnfcn0\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{decimal\}}{\leveltext\leveltemplateid501\'01\'00;}{\levelnumbers\'01;}\fi-360\li720\lin720 }{\listname ;}\listid6}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}{\listoverride\listid3\listoverridecount0\ls3}{\listoverride\listid4\listoverridecount0\ls4}{\listoverride\listid5\listoverridecount0\ls5}{\listoverride\listid6\listoverridecount0\ls6}}
+\margl1440\margr1440\vieww22620\viewh16480\viewkind0
+\deftab720
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 1. Extend the 
+\f1\fs52 Thread
+\f0\fs48  class (Oldest approach)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b0\fs24 \cf0 Create a class that extends 
+\f3\fs26 Thread
+\f2\fs24  and override the 
+\f3\fs26 run()
+\f2\fs24  method.\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 \
+class MyThread extends Thread \{\
+\
+    @Override\
+    public void run() \{\
+        System.out.println("Thread is running");\
+    \}\
+\
+    public static void main(String[] args) \{\
+        MyThread t = new MyThread();\
+        t.start();\
+    \}\
+\}\
+\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 Pros\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f2\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Very simple\
+\ls1\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Easy for beginners\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 Cons\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls2\ilvl0
+\f2\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Java doesn't support multiple inheritance.\
+\ls2\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Your class cannot extend another class.\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 2. Implement the 
+\f1\fs52 Runnable
+\f0\fs48  interface (Most common)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b0\fs24 \cf0 Implement 
+\f3\fs26 Runnable
+\f2\fs24  and pass it to a 
+\f3\fs26 Thread
+\f2\fs24 .\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 \
+class MyTask implements Runnable \{\
+\
+    @Override\
+    public void run() \{\
+        System.out.println("Runnable running");\
+    \}\
+\
+    public static void main(String[] args) \{\
+        Thread t = new Thread(new MyTask());\
+        t.start();\
+    \}\
+\}\
+\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 Pros\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls3\ilvl0
+\f2\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Recommended approach\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Allows your class to extend another class\
+\ls3\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Better separation of task and thread\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 3. Anonymous Runnable\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b0\fs24 \cf0 Useful when the task is small.\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 \
+public class Demo \{\
+\
+    public static void main(String[] args) \{\
+\
+        Thread t = new Thread(new Runnable() \{\
+            @Override\
+            public void run() \{\
+                System.out.println("Anonymous Runnable");\
+            \}\
+        \});\
+\
+        t.start();\
+    \}\
+\}\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 4. Lambda Expression (Java 8+)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b0\fs24 \cf0 Since 
+\f3\fs26 Runnable
+\f2\fs24  is a Functional Interface, lambda can be used.\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 \
+public class Demo \{\
+\
+    public static void main(String[] args) \{\
+\
+        Thread t = new Thread(() -> \{\
+            System.out.println("Lambda Thread");\
+        \});\
+\
+        t.start();\
+    \}\
+\}\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\fs24 \cf0 This is probably the most common way for simple thread creation today.\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 5. Using 
+\f1\fs52 ExecutorService
+\f0\fs48  (Recommended for real applications)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b0\fs24 \cf0 Instead of creating threads manually, submit tasks to a thread pool.\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 \
+import java.util.concurrent.*;\
+\
+public class Demo \{\
+\
+    public static void main(String[] args) \{\
+\
+        ExecutorService executor =\
+                Executors.newFixedThreadPool(2);\
+\
+        executor.submit(() -> \{\
+            System.out.println("Task executed");\
+        \});\
+\
+        executor.shutdown();\
+    \}\
+\}\
+\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 Pros\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls4\ilvl0
+\f2\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Thread reuse\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Better performance\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Thread pool management\
+\ls4\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Used in enterprise applications\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 6. Using 
+\f1\fs52 Callable
+\f0\fs48  (when a result is needed)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b0\fs24 \cf0 Unlike 
+\f3\fs26 Runnable
+\f2\fs24 , 
+\f3\fs26 Callable
+\f2\fs24  returns a value.\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 \
+import java.util.concurrent.*;\
+\
+public class Demo \{\
+\
+    public static void main(String[] args) throws Exception \{\
+\
+        ExecutorService executor =\
+                Executors.newSingleThreadExecutor();\
+\
+        Callable<Integer> task = () -> \{\
+            return 100;\
+        \};\
+\
+        Future<Integer> future = executor.submit(task);\
+\
+        System.out.println(future.get());\
+\
+        executor.shutdown();\
+    \}\
+\}\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\fs24 \cf0 Output\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 \
+100\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 7. Using 
+\f1\fs52 FutureTask
+\f0\fs48 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f3\b0\fs26 \cf0 FutureTask
+\f2\fs24  implements both 
+\f3\fs26 Runnable
+\f2\fs24  and 
+\f3\fs26 Future
+\f2\fs24 .\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 \
+import java.util.concurrent.*;\
+\
+public class Demo \{\
+\
+    public static void main(String[] args) throws Exception \{\
+\
+        FutureTask<Integer> task =\
+                new FutureTask<>(() -> 50);\
+\
+        Thread t = new Thread(task);\
+\
+        t.start();\
+\
+        System.out.println(task.get());\
+    \}\
+\}\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 8. Using 
+\f1\fs52 CompletableFuture
+\f0\fs48  (Java 8+)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b0\fs24 \cf0 Great for asynchronous programming.\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 \
+import java.util.concurrent.*;\
+\
+public class Demo \{\
+\
+    public static void main(String[] args) \{\
+\
+        CompletableFuture.runAsync(() -> \{\
+            System.out.println("Async task");\
+        \});\
+\
+        System.out.println("Main Thread");\
+    \}\
+\}\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\fs24 \cf0 Or returning a value:\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 \
+CompletableFuture<Integer> future =\
+        CompletableFuture.supplyAsync(() -> 100);\
+\
+System.out.println(future.join());\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 9. Virtual Threads (Java 21+)\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b0\fs24 \cf0 Virtual threads are lightweight threads managed by the JVM, making it practical to create thousands or even millions of concurrent tasks.\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 \
+public class Demo \{\
+\
+    public static void main(String[] args) throws Exception \{\
+\
+        Thread.startVirtualThread(() -> \{\
+            System.out.println("Virtual Thread");\
+        \});\
+\
+        Thread.sleep(1000);\
+    \}\
+\}\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\fs24 \cf0 Or using a virtual-thread executor:\
+\pard\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 \
+try (var executor = java.util.concurrent.Executors.newVirtualThreadPerTaskExecutor()) \{\
+    executor.submit(() -> \{\
+        System.out.println("Running in Virtual Thread");\
+    \});\
+\}\
+\
+\pard\pardeftab720\sa280\partightenfactor0
+
+\f0\b\fs28 \cf0 Pros\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls5\ilvl0
+\f2\b0\fs24 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Extremely lightweight\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Massive concurrency\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Ideal for I/O-bound applications\
+\ls5\ilvl0\kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Recommended for modern Java (Java 21+)\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Summary Table\
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2652\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1728
+\clvertalc \clshdrawnil \clwWidth1318\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx3456
+\clvertalc \clshdrawnil \clwWidth1995\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5184
+\clvertalc \clshdrawnil \clwWidth1733\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx6912
+\clvertalc \clshdrawnil \clwWidth3732\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+
+\fs24 \cf0 Method\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 Java Version\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 Returns Result?\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 Recommended?\cell 
+\pard\intbl\itap1\pardeftab720\qc\partightenfactor0
+\cf0 Typical Use\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2652\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1728
+\clvertalc \clshdrawnil \clwWidth1318\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx3456
+\clvertalc \clshdrawnil \clwWidth1995\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5184
+\clvertalc \clshdrawnil \clwWidth1733\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx6912
+\clvertalc \clshdrawnil \clwWidth3732\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f2\b0 \cf0 Extend 
+\f3\fs26 Thread
+\f2\fs24 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 1.0\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u10060 
+\f2 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u11088 
+\f2  Learning only\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Simple examples\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2652\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1728
+\clvertalc \clshdrawnil \clwWidth1318\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx3456
+\clvertalc \clshdrawnil \clwWidth1995\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5184
+\clvertalc \clshdrawnil \clwWidth1733\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx6912
+\clvertalc \clshdrawnil \clwWidth3732\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Implement 
+\f3\fs26 Runnable
+\f2\fs24 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 1.0\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u10060 
+\f2 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u9989 
+\f2  Yes\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 General-purpose tasks\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2652\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1728
+\clvertalc \clshdrawnil \clwWidth1318\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx3456
+\clvertalc \clshdrawnil \clwWidth1995\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5184
+\clvertalc \clshdrawnil \clwWidth1733\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx6912
+\clvertalc \clshdrawnil \clwWidth3732\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Anonymous 
+\f3\fs26 Runnable
+\f2\fs24 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 1.1\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u10060 
+\f2 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u9989 
+\f2 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Short-lived tasks\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2652\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1728
+\clvertalc \clshdrawnil \clwWidth1318\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx3456
+\clvertalc \clshdrawnil \clwWidth1995\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5184
+\clvertalc \clshdrawnil \clwWidth1733\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx6912
+\clvertalc \clshdrawnil \clwWidth3732\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Lambda (
+\f3\fs26 Runnable
+\f2\fs24 )\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 8+\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u10060 
+\f2 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u9989 
+\f2  Highly\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Concise task definitions\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2652\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1728
+\clvertalc \clshdrawnil \clwWidth1318\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx3456
+\clvertalc \clshdrawnil \clwWidth1995\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5184
+\clvertalc \clshdrawnil \clwWidth1733\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx6912
+\clvertalc \clshdrawnil \clwWidth3732\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 ExecutorService
+\f2\fs24 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 5+\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Optional (
+\f3\fs26 Future
+\f2\fs24 )\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u11088 \u11088 \u11088 \u11088 
+\f2 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Enterprise applications\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2652\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1728
+\clvertalc \clshdrawnil \clwWidth1318\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx3456
+\clvertalc \clshdrawnil \clwWidth1995\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5184
+\clvertalc \clshdrawnil \clwWidth1733\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx6912
+\clvertalc \clshdrawnil \clwWidth3732\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 Callable
+\f2\fs24 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 5+\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u9989 
+\f2 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u11088 \u11088 \u11088 \u11088 
+\f2 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Tasks that return values\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2652\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1728
+\clvertalc \clshdrawnil \clwWidth1318\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx3456
+\clvertalc \clshdrawnil \clwWidth1995\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5184
+\clvertalc \clshdrawnil \clwWidth1733\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx6912
+\clvertalc \clshdrawnil \clwWidth3732\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 FutureTask
+\f2\fs24 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 5+\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u9989 
+\f2 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u11088 \u11088 \u11088 
+\f2 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Advanced coordination\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2652\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1728
+\clvertalc \clshdrawnil \clwWidth1318\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx3456
+\clvertalc \clshdrawnil \clwWidth1995\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5184
+\clvertalc \clshdrawnil \clwWidth1733\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx6912
+\clvertalc \clshdrawnil \clwWidth3732\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f3\fs26 \cf0 CompletableFuture
+\f2\fs24 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 8+\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u9989 
+\f2 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u11088 \u11088 \u11088 \u11088 \u11088 
+\f2 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Asynchronous workflows\cell \row
+
+\itap1\trowd \taflags0 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
+\clvertalc \clshdrawnil \clwWidth2652\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx1728
+\clvertalc \clshdrawnil \clwWidth1318\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx3456
+\clvertalc \clshdrawnil \clwWidth1995\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx5184
+\clvertalc \clshdrawnil \clwWidth1733\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx6912
+\clvertalc \clshdrawnil \clwWidth3732\clftsWidth3 \clmart10 \clmarl10 \clmarb10 \clmarr10 \clbrdrt\brdrnil \clbrdrl\brdrnil \clbrdrb\brdrnil \clbrdrr\brdrnil \clpadt20 \clpadl20 \clpadb20 \clpadr20 \gaph\cellx8640
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Virtual Threads\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 21+\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Optional\cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+
+\f4 \cf0 \uc0\u11088 \u11088 \u11088 \u11088 \u11088 
+\f2 \cell 
+\pard\intbl\itap1\pardeftab720\partightenfactor0
+\cf0 Modern high-concurrency applications\cell \lastrow\row
+\pard\pardeftab720\sa298\partightenfactor0
+
+\f0\b\fs36 \cf0 Teaching recommendation\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f2\b0\fs24 \cf0 For students, introduce the concepts in this order:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls6\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	1	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Extend 
+\f1\fs26 Thread
+\f2\b0\fs24  \'96 to understand what a thread is.\
+\ls6\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	2	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Implement 
+\f1\fs26 Runnable
+\f2\b0\fs24  \'96 explain why it's preferred over extending 
+\f3\fs26 Thread
+\f2\fs24 .\
+\ls6\ilvl0
+\f0\b \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	3	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Lambda with 
+\f1\fs26 Runnable
+\f2\b0\fs24  \'96 show the modern, concise syntax.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls6\ilvl0
+\f1\b\fs26 \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	4	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ExecutorService
+\f2\b0\fs24  \'96 explain why production code avoids creating threads directly.\
+\ls6\ilvl0
+\f1\b\fs26 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	5	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Callable
+\f0\fs24  and 
+\f1\fs26 Future
+\f2\b0\fs24  \'96 introduce returning results from background tasks.\
+\ls6\ilvl0
+\f1\b\fs26 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	6	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 CompletableFuture
+\f2\b0\fs24  \'96 cover asynchronous programming and task composition.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls6\ilvl0
+\f0\b \cf0 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	7	}\expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Virtual Threads (Java 21+)
+\f2\b0  \'96 conclude with the latest approach, explaining how Java now supports millions of lightweight threads for scalable concurrent applications.\
+\pard\pardeftab720\sa240\partightenfactor0
+\cf0 This sequence lets students first understand the basics of thread creation before moving to the higher-level concurrency utilities used in real-world Java development.\
+}
