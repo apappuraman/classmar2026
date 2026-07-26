@@ -1,0 +1,514 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2870
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Bold;\f1\froman\fcharset0 Times-Roman;\f2\fmodern\fcharset0 Courier;
+\f3\fmodern\fcharset0 Courier-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red109\green109\blue109;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c50196\c50196\c50196;}
+\margl1440\margr1440\vieww26300\viewh18260\viewkind0
+\deftab720
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Step 1: Verify Java Installation\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 Check your Java version:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+java -version\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 You should see Java 11, 17, or 21.\
+Now find 
+\f2\fs26 JAVA_HOME
+\f1\fs24 :\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+/usr/libexec/java_home\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Example output:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Remember this path.\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 2: Download Hadoop\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 Download the latest stable Hadoop 3.x release from Apache.\
+Example:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+cd ~/Downloads\
+\
+curl -O https://downloads.apache.org/hadoop/common/hadoop-3.4.1/hadoop-3.4.1.tar.gz\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Or download it from the Apache website using your browser.\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 3: Extract Hadoop\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 \
+cd ~\
+\
+tar -xzf ~/Downloads/hadoop-3.4.1.tar.gz\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Rename it:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+mv hadoop-3.4.1 hadoop\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Now Hadoop will be located at:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+~/hadoop\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 4: Configure Environment Variables\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 Edit your shell profile.\
+If you're using zsh (default on macOS):\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+nano ~/.zshrc\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Add:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+export JAVA_HOME=$(/usr/libexec/java_home)\
+\
+export HADOOP_HOME=$HOME/hadoop\
+\
+export PATH=$PATH:$HADOOP_HOME/bin\
+\
+export PATH=$PATH:$HADOOP_HOME/sbin\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Save:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+Ctrl + O\
+Enter\
+Ctrl + X\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Reload:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+source ~/.zshrc\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 5: Verify Hadoop\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 \
+hadoop version\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Expected:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+Hadoop 3.x.x\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 6: Configure JAVA_HOME\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 Edit:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+nano $HADOOP_HOME/etc/hadoop/hadoop-env.sh\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Find:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+export JAVA_HOME=\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Replace with\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+export JAVA_HOME=$(/usr/libexec/java_home)\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 or paste the complete path.\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 7: Create Hadoop Data Directories\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 \
+mkdir ~/hadoopdata\
+mkdir ~/hadoopdata/hdfs\
+mkdir ~/hadoopdata/hdfs/namenode\
+mkdir ~/hadoopdata/hdfs/datanode\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 8: Configure 
+\f3\fs52 core-site.xml
+\f0\fs48 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 Edit:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+nano $HADOOP_HOME/etc/hadoop/core-site.xml\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Replace with:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+<configuration>\
+\
+<property>\
+    <name>fs.defaultFS</name>\
+    <value>hdfs://localhost:9000</value>\
+</property>\
+\
+</configuration>\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 9: Configure 
+\f3\fs52 hdfs-site.xml
+\f0\fs48 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 \
+nano $HADOOP_HOME/etc/hadoop/hdfs-site.xml\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Replace with:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+<configuration>\
+\
+<property>\
+    <name>dfs.replication</name>\
+    <value>1</value>\
+</property>\
+\
+<property>\
+    <name>dfs.namenode.name.dir</name>\
+    <value>file:///Users/YOUR_USERNAME/hadoopdata/hdfs/namenode</value>\
+</property>\
+\
+<property>\
+    <name>dfs.datanode.data.dir</name>\
+    <value>file:///Users/YOUR_USERNAME/hadoopdata/hdfs/datanode</value>\
+</property>\
+\
+</configuration>\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Replace 
+\f2\fs26 YOUR_USERNAME
+\f1\fs24  with your macOS username.\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 10: Configure 
+\f3\fs52 mapred-site.xml
+\f0\fs48 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 Copy the template:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+cp \\\
+$HADOOP_HOME/etc/hadoop/mapred-site.xml.template \\\
+$HADOOP_HOME/etc/hadoop/mapred-site.xml\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Edit:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+nano $HADOOP_HOME/etc/hadoop/mapred-site.xml\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Paste:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+<configuration>\
+\
+<property>\
+    <name>mapreduce.framework.name</name>\
+    <value>yarn</value>\
+</property>\
+\
+</configuration>\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 11: Configure 
+\f3\fs52 yarn-site.xml
+\f0\fs48 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 \
+nano $HADOOP_HOME/etc/hadoop/yarn-site.xml\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Paste:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+<configuration>\
+\
+<property>\
+    <name>yarn.nodemanager.aux-services</name>\
+    <value>mapreduce_shuffle</value>\
+</property>\
+\
+</configuration>\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 12: Format the NameNode\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 Run 
+\f0\b \strokec2 only once
+\f1\b0 \strokec2 :\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+hdfs namenode -format\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 You should eventually see:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+Storage directory has been successfully formatted.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 13: Enable Passwordless SSH\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 macOS requires SSH for Hadoop daemons.\
+Generate a key:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+ssh-keygen -t rsa\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Press 
+\f0\b \strokec2 Enter
+\f1\b0 \strokec2  for every prompt.\
+Then:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys\
+\
+chmod 600 ~/.ssh/authorized_keys\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Verify:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+ssh localhost\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 The first time, type:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+yes\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Then:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+exit\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 14: Start HDFS\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 \
+start-dfs.sh\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 15: Verify Processes\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 \
+jps\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Expected:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+NameNode\
+\
+DataNode\
+\
+SecondaryNameNode\
+\
+Jps\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 16: Start YARN\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 \
+start-yarn.sh\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Now:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+jps\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 Should include:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+NameNode\
+\
+DataNode\
+\
+SecondaryNameNode\
+\
+ResourceManager\
+\
+NodeManager\
+\
+Jps\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f0\b\fs48 \cf0 \strokec2 Step 17: Open the Web UIs\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\b0\fs24 \cf0 NameNode:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+http://localhost:9870\
+\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f1\fs24 \cf0 ResourceManager:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \
+http://localhost:8088\
+\
+}
