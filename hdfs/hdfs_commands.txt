@@ -1,0 +1,220 @@
+1. Check HDFS Root Directory
+hdfs dfs -ls /
+
+Output:
+
+drwxr-xr-x   - apappuraman supergroup          0 2026-07-27 20:40 /user
+2. Create Directories
+
+Create one directory:
+
+hdfs dfs -mkdir /demo
+
+Create nested directories:
+
+hdfs dfs -mkdir -p /demo/input/data
+
+List:
+
+hdfs dfs -ls /demo
+3. Copy Local File to HDFS (-put)
+
+Create a sample file:
+
+echo "Hello Hadoop" > sample.txt
+
+Upload:
+
+hdfs dfs -put sample.txt /demo
+
+Verify:
+
+hdfs dfs -ls /demo
+4. Copy Using -copyFromLocal
+
+Same as -put:
+
+hdfs dfs -copyFromLocal sample.txt /demo
+5. Display File Contents (-cat)
+hdfs dfs -cat /demo/sample.txt
+
+Output:
+
+Hello Hadoop
+6. Display First Few Lines (-head)
+hdfs dfs -head /demo/sample.txt
+7. Display Last Few Lines (-tail)
+hdfs dfs -tail /demo/sample.txt
+8. Copy HDFS File to Local (-get)
+hdfs dfs -get /demo/sample.txt .
+
+Verify:
+
+ls
+9. Copy Using -copyToLocal
+hdfs dfs -copyToLocal /demo/sample.txt .
+10. Display File Size
+hdfs dfs -du /demo
+
+Human readable:
+
+hdfs dfs -du -h /demo
+11. Disk Usage Summary
+hdfs dfs -df -h
+12. Count Files and Directories
+hdfs dfs -count /demo
+
+Example:
+
+DIR_COUNT FILE_COUNT CONTENT_SIZE PATH
+13. Rename File
+hdfs dfs -mv /demo/sample.txt /demo/test.txt
+14. Rename Directory
+hdfs dfs -mv /demo /mydata
+15. Copy File Within HDFS
+hdfs dfs -cp /mydata/test.txt /mydata/test_copy.txt
+16. Delete File
+hdfs dfs -rm /mydata/test_copy.txt
+17. Delete Directory
+hdfs dfs -rm -r /mydata
+
+or
+
+hdfs dfs -rm -R /mydata
+18. Remove Empty Directory
+hdfs dfs -rmdir /emptydir
+19. Check File Permissions
+hdfs dfs -ls /mydata
+
+Example:
+
+-rw-r--r--
+20. Change Permission
+hdfs dfs -chmod 777 /mydata/test.txt
+
+Recursive:
+
+hdfs dfs -chmod -R 755 /mydata
+21. Change Owner
+hdfs dfs -chown user:group /mydata/test.txt
+22. Change Group
+hdfs dfs -chgrp supergroup /mydata/test.txt
+23. View File Checksum
+hdfs dfs -checksum /mydata/test.txt
+24. Find Files
+hdfs dfs -find / -name "*.txt"
+25. View Block Locations
+hdfs fsck /mydata/test.txt -files -blocks
+
+This is very useful for understanding HDFS internals.
+
+26. Create Empty File
+hdfs dfs -touchz /demo/empty.txt
+27. Append Data
+
+Create another file:
+
+echo "Apache Hadoop" > temp.txt
+
+Append:
+
+hdfs dfs -appendToFile temp.txt /demo/sample.txt
+
+View:
+
+hdfs dfs -cat /demo/sample.txt
+28. Show HDFS Help
+hdfs dfs -help
+
+Specific command:
+
+hdfs dfs -help put
+29. View All Files Recursively
+hdfs dfs -ls -R /
+30. Test Whether a File Exists
+hdfs dfs -test -e /demo/sample.txt
+echo $?
+
+Output:
+
+0
+
+means the file exists.
+
+31. Merge Multiple Files
+hdfs dfs -getmerge /demo merged.txt
+
+Useful when MapReduce creates many output files.
+
+32. Show File Statistics
+hdfs dfs -stat /demo/sample.txt
+
+Example:
+
+File: sample.txt
+Size: 1024
+33. Expunge Trash
+hdfs dfs -expunge
+34. Create Snapshot (if enabled)
+hdfs dfs -createSnapshot /demo snap1
+35. Delete Snapshot
+hdfs dfs -deleteSnapshot /demo snap1
+Practice Exercise
+
+Try these commands in order:
+
+echo "Welcome to Hadoop" > file1.txt
+
+echo "Apache Spark" > file2.txt
+
+hdfs dfs -mkdir /practice
+
+hdfs dfs -put file1.txt /practice
+
+hdfs dfs -put file2.txt /practice
+
+hdfs dfs -ls /practice
+
+hdfs dfs -cat /practice/file1.txt
+
+hdfs dfs -cp /practice/file1.txt /practice/file3.txt
+
+hdfs dfs -mv /practice/file2.txt /practice/data.txt
+
+hdfs dfs -chmod 777 /practice/file3.txt
+
+hdfs dfs -du -h /practice
+
+hdfs dfs -count /practice
+
+hdfs dfs -get /practice/file1.txt .
+
+hdfs dfs -rm /practice/file3.txt
+
+hdfs dfs -ls /practice
+
+hdfs dfs -rm -r /practice
+Commands You'll Use Most Often
+
+These are the commands you'll encounter regularly in Hadoop development and interviews:
+
+Command	Purpose
+-ls	List files/directories
+-mkdir	Create directory
+-put	Upload local file to HDFS
+-get	Download file from HDFS
+-cat	Display file contents
+-cp	Copy file in HDFS
+-mv	Move or rename file
+-rm	Delete file
+-rm -r	Delete directory recursively
+-du	Show disk usage
+-count	Count files and directories
+-chmod	Change permissions
+-chown	Change owner
+-tail	Show last lines of a file
+-head	Show first lines of a file
+-appendToFile	Append data to a file
+-find	Search for files
+-stat	Show file metadata
+-test	Check if a file or directory exists
